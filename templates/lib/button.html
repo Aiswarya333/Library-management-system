@@ -1,0 +1,242 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+    <title>Library Management System</title>
+
+    
+  
+    <!-- Bootstrap -->
+    <link href="{% static "/template/vendors/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static "/template/vendors/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href= "{% static "/template/vendors/nprogress/nprogress.css" %}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{% static "/template/vendors/animate.css/animate.min.css" %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static "/template/build/css/custom.min.css" %}" rel="stylesheet">
+  </head>
+  <center>
+  <h2>BOOKS AVAILABLE</h2>
+  <div class="x_content">
+    <div class="table-responsive">
+      <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                          <tr class="headings">
+                            <th class="column-title">SELECT</th>
+                            <th class="column-title">SL.NO </th>
+                            <th class="column-title">TITLE </th>
+                            <th class="column-title">AUTHOR </th>
+                            <th class="column-title">PUBLISHED_DATE </th>
+                           
+                            <th class="column-title">AVAILABILITY </th>
+                            <th class="bulk-actions" colspan="7">
+                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="even pointer">
+                            </tr>
+                            {% for item in objects %}
+                            <tr>
+                                <td ><input type="checkbox" name="checkbox" class="checkbox" value="{{item.pk}}"></td>
+                                <td id="id">{{ item.id }}</td>   
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.author }}</td>
+                                <td>{{ item.published_date }}</td>
+                                <td>{{ item.availability }}</td>
+                            </tr>
+                            {% endfor %}
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+              </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <br>
+        <footer>
+          <div class="pull-right">
+           Library Management system <a href="https://en.wikipedia.org/wiki/Library">Library</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div><br><br>
+    <div class="x_content"></div>
+      
+        
+       
+    
+        
+        
+        
+        <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">ADD</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enter new Book details</h4>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action = "{% url 'addbook' %}">
+              {% csrf_token %}
+            <label for="fullname">Enter Book Title :</label>
+            <input type="text" id="fullname" class="form-control" name="title" required />
+            <br>
+
+            <label for="author">Enter Author name :</label>
+            <input type="text" id="author" class="form-control" name="author" required />
+            <br>
+
+            <label for="fullname">Enter Published_date :</label>
+            <input type="date" id="fullname" class="form-control" name="published_date" required />
+            <br>
+
+            <label for="fullname">Enter Availability :</label>
+            <input type="text" id="fullname" class="form-control" name="availability" required />
+            <br>
+            
+           
+            <input type="submit" class="btn btn-primary" />
+            
+          </form>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal1">UPDATE</button>
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label for="fullname">Enter Book Title :</label>
+        <input type="text" id="fullname" class="form-control" name="title" required />
+        <br>
+
+        <label for="author">Enter Author name :</label>
+        <input type="text" id="author" class="form-control" name="author" required />
+        <br>
+
+        <label for="fullname">Enter Published_date :</label>
+        <input type="date" id="fullname" class="form-control" name="published_date" required />
+        <br>
+
+        <label for="fullname">Enter Availability :</label>
+        <input type="text" id="fullname" class="form-control" name="availability" required />
+        <br>
+        
+       
+        <input type="submit" class="btn btn-primary" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+ 
+</script>
+
+    
+
+<button type="button" class="btn btn-info btn-sm" data-dismiss="modal" id="delete_history">DELETE</button>
+
+
+
+  
+  
+  </center>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+  </body>
+</html>
+
+
+<script>
+           var checked_array = []
+          $("#delete_history").click(function () {
+
+
+            $("input:checkbox[name=checkbox]:checked").each(function () {
+              checked_array.push($(this).val());
+            });
+            $.unique(checked_array)
+
+            $.ajax({
+
+              url: '{% url "delete" %}',
+              method: "POST",
+
+              data: {
+                checked_array: JSON.stringify(checked_array),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+              },
+              success: function (data) {
+                if (data.error_flag == 1) {
+                  alert('all your data downloading is not completed!!!');
+                }
+                checked_array.length = 0;
+                location.reload();
+              },
+            });
+
+          })
+
+</script>
+
+

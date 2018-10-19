@@ -1,0 +1,37 @@
+label{
+    display:inline-block;
+    width:200px;
+    margin-right:30px;
+    text-align:right;
+    }
+.button{
+       
+        padding: 15px 25px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color:  #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999
+    }
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+ 
+ h1 {
+    color: #0c0c0c;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 150px;
+    margin-bottom: 1px;
+    }
+    
